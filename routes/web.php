@@ -30,26 +30,3 @@ Route::get('/month/{id?}', function($id = '5') {
 //     'id' => '[0-9]+'
 // ])
 ->name('home.month.monthId');
-
-
-// NOTES:
-// ->name('example.example'); ---> This gives the Route a specific name
-// you can list these names out from the terminal with ```php artisan route:list```
-// It is "best practice" according to Piotr to always give your routes names
-// You can write Regex constraints... 
-// which are basically just validations on the route prior to hitting the controller... good security feature
-// These are done with the ->where() if you want them to be Route specific... you can also do this in:
-// RouteServiceProvider.php
-
-// TODO:
-// Go through and write routes for all the basic functionality that I will want to do.
-// Be sure to include defaults if you want to make optional paramters
-// practice Regex writing
-// Add as many validations as make sense
-// Be sure to define a naming convention for your routes and be sure to name all Routes.
-// Pages to view...
-//      
-//      
-// API Routes to define
-//      
-//      
