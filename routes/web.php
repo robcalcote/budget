@@ -56,3 +56,8 @@ Route::match(['get', 'post'], '/transaction/{id?}', function ($id=null) {
 Route::get('/transactions', function() {
     return 'get all transactions... ';
 })->name('api.transactions');
+
+// ROUTE:  Demo Blade Template
+Route::get('/demo', function() {
+    return view('demo', []);
+})->name('template.demo');
