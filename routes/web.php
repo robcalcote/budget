@@ -13,8 +13,15 @@ use Illuminate\Support\Facades\Route;
 
 // ROUTE:  home
 // DESC:   returns the main page of the application
-Route::view('/', 'home',  ['name' => 'Rob']
-)->name('view.home');
+Route::get('/',  function() {
+    return view('home', []);
+})->name('template.home');
+
+// ROUTE:  secondpage
+// DESC:   tear this out later, this is just testing template inheritance...
+Route::get('/secondpage',  function() {
+    return view('secondpage', []);
+})->name('template.secondpage');
 
 // ROUTE:  category
 // METHOD: get, post
@@ -56,3 +63,8 @@ Route::match(['get', 'post'], '/transaction/{id?}', function ($id=null) {
 Route::get('/transactions', function() {
     return 'get all transactions... ';
 })->name('api.transactions');
+
+// ROUTE:  Demo Blade Template
+Route::get('/demo', function() {
+    return view('demo', []);
+})->name('template.demo');
