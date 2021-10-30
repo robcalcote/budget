@@ -13,8 +13,15 @@ use Illuminate\Support\Facades\Route;
 
 // ROUTE:  home
 // DESC:   returns the main page of the application
-Route::view('/', 'home',  ['name' => 'Rob']
-)->name('view.home');
+Route::get('/',  function() {
+    return view('home', []);
+})->name('template.home');
+
+// ROUTE:  secondpage
+// DESC:   tear this out later, this is just testing template inheritance...
+Route::get('/secondpage',  function() {
+    return view('secondpage', []);
+})->name('template.secondpage');
 
 // ROUTE:  category
 // METHOD: get, post
