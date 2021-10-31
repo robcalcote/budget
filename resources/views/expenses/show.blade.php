@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', 'Expense #')
+@section('title', 'Expense View')
 
 @section('content')
 <h1>{{ $expense['location']}}</h1>

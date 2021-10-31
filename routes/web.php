@@ -4,18 +4,14 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Template Routes
 |--------------------------------------------------------------------------
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group.
+| View blade templates with these routes
 */
 
 // ROUTE:  home
 // DESC:   returns the main page of the application
-Route::get('/',  function() {
-    return view('home', []);
-})->name('template.home');
+Route::view('/', 'home')->name('template.home');
 
 // ROUTE:  expenses
 // DESC:   returns information about an expense when id is given
@@ -47,8 +43,17 @@ Route::get('/expenses/{id?}',  function($id) {
 
     // abort validation if the ID doesn't exist
     abort_if(!isset($expenses[$id]), 404);
-    return view('expenses.show', ['expense' => $expenses[$id]]);
+    return view('expenses.show', [
+        'expense' => $expenses[$id]
+    ]);
 })->name('template.expenses.show');
+
+/*
+|--------------------------------------------------------------------------
+| API Endpoint Routes
+|--------------------------------------------------------------------------
+| Hit API endpoints to access CRUD functionality with these routes
+*/
 
 // ROUTE:  category
 // METHOD: get, post
@@ -90,8 +95,3 @@ Route::match(['get', 'post'], '/transaction/{id?}', function ($id=null) {
 Route::get('/transactions', function() {
     return 'get all transactions... ';
 })->name('api.transactions');
-
-// ROUTE:  Demo Blade Template
-Route::get('/demo', function() {
-    return view('demo', []);
-})->name('template.demo');
