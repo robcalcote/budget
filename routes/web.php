@@ -22,12 +22,14 @@ Route::get('/expenses/{id?}',  function($id) {
         1 => [
             'date' => '10/30/2021',
             'location' => 'Target',
-            'amount' => '10.71'
+            'amount' => '10.71',
+            'display' => false
         ],
         2 => [
             'date' => '10/31/2021',
             'location' => 'Costco Optical',
-            'amount' => '25.80'
+            'amount' => '25.80',
+            'display' => true
         ],
         3 => [
             'date' => '10/31/2021',
