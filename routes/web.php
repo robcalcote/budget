@@ -48,9 +48,7 @@ Route::get('/expenses', function() use($expenses) {
 // DESC:   returns information about an expense when id is given
 Route::get('/expenses/{id?}',  function($id) use ($expenses) {
     abort_if(!isset($expenses[$id]), 404);
-    return view('expenses.show', [
-        'expense' => $expenses[$id]
-    ]);
+    return view('expenses.show', ['expense' => $expenses[$id]]);
 })->name('template.expenses.show');
 
 /*

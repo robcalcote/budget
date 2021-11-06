@@ -15,7 +15,7 @@
 	<p>display attr is false, unless directive is the same as if(!)</p>
 @endunless
 
-@isset() @endisset
-@empty() @endempty
+{{-- @isset() @endisset --}}
+{{-- @empty() @endempty --}}
 
 @endsection
