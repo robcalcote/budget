@@ -2,6 +2,31 @@
 
 use Illuminate\Support\Facades\Route;
 
+$expenses = [
+    1 => [
+        'date' => '10/30/2021',
+        'location' => 'Target',
+        'amount' => '10.71',
+        'display' => false
+    ],
+    2 => [
+        'date' => '10/31/2021',
+        'location' => 'Costco Optical',
+        'amount' => '25.80',
+        'display' => true
+    ],
+    3 => [
+        'date' => '10/31/2021',
+        'location' => 'Costco',
+        'amount' => '63.26'
+    ],
+    4 => [
+        'date' => '10/31/2021',
+        'location' => 'Costco Foodcourt',
+        'amount' => '4.31'
+    ]
+];
+
 /*
 |--------------------------------------------------------------------------
 | Template Routes
@@ -14,38 +39,16 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'home')->name('template.home');
 
 // ROUTE:  expenses
-// DESC:   returns information about an expense when id is given
-Route::get('/expenses/{id?}',  function($id) {
-    // obviously you would make this data driven... rather than just creating the data in the Route here...
-    // this is literally just practice to show how you can get data from the Route -> Template
-    $expenses = [
-        1 => [
-            'date' => '10/30/2021',
-            'location' => 'Target',
-            'amount' => '10.71'
-        ],
-        2 => [
-            'date' => '10/31/2021',
-            'location' => 'Costco Optical',
-            'amount' => '25.80'
-        ],
-        3 => [
-            'date' => '10/31/2021',
-            'location' => 'Costco',
-            'amount' => '63.26'
-        ],
-        4 => [
-            'date' => '10/31/2021',
-            'location' => 'Costco Foodcourt',
-            'amount' => '4.31'
-        ]
-    ];
+Route::get('/expenses', function() use($expenses) {
+    return view('expenses.index', ['expenses' => $expenses]);
+});
 
-    // abort validation if the ID doesn't exist
+
+// ROUTE:  expenses (with id)
+// DESC:   returns information about an expense when id is given
+Route::get('/expenses/{id?}',  function($id) use ($expenses) {
     abort_if(!isset($expenses[$id]), 404);
-    return view('expenses.show', [
-        'expense' => $expenses[$id]
-    ]);
+    return view('expenses.show', ['expense' => $expenses[$id]]);
 })->name('template.expenses.show');
 
 /*
