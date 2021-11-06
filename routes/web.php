@@ -109,7 +109,8 @@ Route::get('/transactions', function() {
 Route::prefix('/fun')->name('fun.')->group(function()  use($expenses) {
     Route::get('/json', function() use($expenses) {
         return response()->json($expenses);
-    })->name('json');
+        // with the ->middleware('auth') you invoke checking if the user is authenticated.
+    })->name('json')->middleware('auth');
     
     Route::get('/download', function() {
         return response()->download(public_path('/test-img.png'), 'test.jpg');
