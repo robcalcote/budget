@@ -98,3 +98,14 @@ Route::match(['get', 'post'], '/transaction/{id?}', function ($id=null) {
 Route::get('/transactions', function() {
     return 'get all transactions... ';
 })->name('api.transactions');
+
+/*
+|--------------------------------------------------------------------------
+| LEARNING
+|--------------------------------------------------------------------------
+| Rip me out later
+*/
+
+Route::get('/fun/json', function() use($expenses) {
+    return response()->json($expenses);
+});
