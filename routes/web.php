@@ -34,29 +34,6 @@ $expenses = [
 | View blade templates with these routes
 */
 
-Route::get('/fun/responses', function() use($expenses) {
-    // Use this when you want to change teh code, set a header, or set a cookie
-    return response($expenses, 201)
-        ->header('Content-Type', 'application/json')
-        ->cookie('MY_COOKIE', 'Rob Calcote', 3600);
-});
-
-Route::get('/fun/redirect', function() {
-    return redirect('/expenses');
-});
-
-Route::get('/fun/back', function() {
-    return back();
-});
-
-Route::get('/fun/named-route', function() {
-    return redirect()->route('template.expenses.show', ['id' => 1]);
-});
-
-Route::get('/fun/away', function () {
-    return redirect()->away('https://www.google.com');
-});
-
 // ROUTE:  home
 // DESC:   returns the main page of the application
 Route::view('/', 'home')->name('template.home');
