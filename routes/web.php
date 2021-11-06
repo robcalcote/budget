@@ -45,6 +45,18 @@ Route::get('/fun/redirect', function() {
     return redirect('/expenses');
 });
 
+Route::get('/fun/back', function() {
+    return back();
+});
+
+Route::get('/fun/named-route', function() {
+    return redirect()->route('template.expenses.show', ['id' => 1]);
+});
+
+Route::get('/fun/away', function () {
+    return redirect()->away('https://www.google.com');
+});
+
 // ROUTE:  home
 // DESC:   returns the main page of the application
 Route::view('/', 'home')->name('template.home');
