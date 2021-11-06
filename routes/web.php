@@ -106,10 +106,12 @@ Route::get('/transactions', function() {
 | Rip me out later
 */
 
-Route::get('/fun/json', function() use($expenses) {
-    return response()->json($expenses);
-});
-
-Route::get('/fun/download', function() use($expenses) {
-    return response()->download(public_path('/test-img.png'), 'test.jpg');
+Route::prefix('/fun')->name('fun.')->group(function()  use($expenses) {
+    Route::get('/json', function() use($expenses) {
+        return response()->json($expenses);
+    })->name('json');
+    
+    Route::get('/download', function() {
+        return response()->download(public_path('/test-img.png'), 'test.jpg');
+    })->name('download');
 });
