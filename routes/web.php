@@ -109,3 +109,7 @@ Route::get('/transactions', function() {
 Route::get('/fun/json', function() use($expenses) {
     return response()->json($expenses);
 });
+
+Route::get('/fun/download', function() use($expenses) {
+    return response()->download(public_path('/test-img.png'), 'test.jpg');
+});
