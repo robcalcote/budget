@@ -98,21 +98,3 @@ Route::match(['get', 'post'], '/transaction/{id?}', function ($id=null) {
 Route::get('/transactions', function() {
     return 'get all transactions... ';
 })->name('api.transactions');
-
-/*
-|--------------------------------------------------------------------------
-| LEARNING
-|--------------------------------------------------------------------------
-| Rip me out later
-*/
-
-Route::prefix('/fun')->name('fun.')->group(function()  use($expenses) {
-    Route::get('/json', function() use($expenses) {
-        return response()->json($expenses);
-        // with the ->middleware('auth') you invoke checking if the user is authenticated.
-    })->name('json')->middleware('auth');
-    
-    Route::get('/download', function() {
-        return response()->download(public_path('/test-img.png'), 'test.jpg');
-    })->name('download');
-});
